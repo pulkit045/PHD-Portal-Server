@@ -1,2 +1,8 @@
+# ignore the bulky node_modules folder from tracking
 node_modules
+
+# ignore confidential credentials
 .env
+
+#vscode settings
+.vscode
