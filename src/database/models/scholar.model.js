@@ -45,7 +45,18 @@ const ScholarSchema = new Schema({
 		type: String,
 		required: true,
 	},
-
+	course_active:[
+		{
+			type: mongoose.SchemaTypes.ObjectId,
+			ref: "course",
+		}
+	],
+	course_completed:[
+		{
+			type: mongoose.SchemaTypes.ObjectId,
+			ref: "course",
+		}
+	],
 	requests: [
 		{
 			type: Schema.Types.ObjectId,

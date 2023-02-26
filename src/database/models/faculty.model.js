@@ -35,6 +35,13 @@ const FacultySchema = new Schema({
 		required: true,
 	},
 
+	course:[
+		{
+			type: mongoose.SchemaTypes.ObjectId,
+			ref: "course"
+		}
+	],
+
 	requests: [
 		{
 			type: Schema.Types.ObjectId,

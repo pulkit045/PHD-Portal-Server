@@ -31,7 +31,6 @@ passport.use(
         if (!validate) {
           return done(null, false, { message: "Wrong Password" });
         }
-
         return done(null, user, { message: "Logged in Successfully" });
       } catch (error) {
         return done(error);
@@ -78,7 +77,8 @@ passport.use(
     async (token, done) => {
       try {
         // console.log("token.user", token.user);
-        return done(null, token.user);
+        // console.log("token.role:" + token.role);
+        return done(null, {user:token.user,role:token.role});
       } catch (error) {
         done(error);
       }

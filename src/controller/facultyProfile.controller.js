@@ -2,8 +2,8 @@ const Faculty = require("../database/models/faculty.model");
 
 module.exports = async (req, res, next) => {
 	try {
-		// console.log(req);
-		const faculty = (await Faculty.findById(req.user._id).populate("requests")).toObject();
+		// console.log(req.user.role);
+		const faculty = (await Faculty.findById(req.user.user._id).populate("requests").populate("course")).toObject();
 		// console.log("scholar", scholar);
 		delete faculty["password"]
 		delete faculty["notification"]

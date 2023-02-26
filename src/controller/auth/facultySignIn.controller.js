@@ -9,11 +9,9 @@ module.exports = async (req, res, next) => {
 	passport.authenticate("faculty_signin", async (err, user, info) => {
 		try {
 			if (err) {
-				// console.log(err);
 				throw new Error(err);
 			}
 			if (!user) {
-				// console.log("User couldn't be found for authentication.");
 				throw new Error(info.message);
 			}
 
@@ -24,7 +22,7 @@ module.exports = async (req, res, next) => {
 				}
 
 				const body = { _id: user._id, email: user.email, fullname: user.fullname };
-
+				console.log(body);
 				let role = "faculty";
 
 				if (user.email === "director@iiitl.ac.in") {
@@ -35,7 +33,7 @@ module.exports = async (req, res, next) => {
 				}
 
 				const token = jwt.sign({ user: body, role }, process.env.SECRET, {
-					expiresIn: "24h",
+					expiresIn: "30d",
 				});
 
 				return res.json({ token });
