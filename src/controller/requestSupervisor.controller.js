@@ -5,6 +5,15 @@ const Request = require("../database/models/requests.model");
 const requestSupervisor = async (req, res, next) => {
   try {
     const body = req.body;
+    const isRequested = await Request.find({scholar_id : req.body.scholar_id , supervisor_id : req.body.supervisor_id});
+    console.log(isRequested);
+    if(isRequested){
+      res.status = 200;
+      res.send({
+        value: "Same Request is Already made",
+      });
+      return;
+    }
     const scholarData = (await Scholar.findById(req.user.user._id)).toObject();
     const supervisorData = (
       await Faculty.findById(body.supervisor_id)
