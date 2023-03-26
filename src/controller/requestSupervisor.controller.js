@@ -4,10 +4,13 @@ const Request = require("../database/models/requests.model");
 
 const requestSupervisor = async (req, res, next) => {
   try {
+
+    // check for duplicacy in request then only adding : )
     const body = req.body;
-    const isRequested = await Request.find({scholar_id : req.body.scholar_id , supervisor_id : req.body.supervisor_id});
-    console.log(isRequested);
-    if(isRequested){
+    // console.log(req.user.user._id);
+    const isRequested = await Request.find({scholar_id : req.user.user._id , supervisor_id : req.body.supervisor_id});
+    // console.log(isRequested);
+    if(isRequested.length){
       res.status = 200;
       res.send({
         value: "Same Request is Already made",
@@ -18,11 +21,11 @@ const requestSupervisor = async (req, res, next) => {
     const supervisorData = (
       await Faculty.findById(body.supervisor_id)
     ).toObject();
-
+    // console.log(body);
     const requestData = {
-      scholar: body.scholar,
-      scholar_id: body.scholar_id,
-      supervisor: body.supervisor,
+      scholar: scholarData.fullName,
+      scholar_id: req.user.user._id,
+      supervisor: supervisorData.fullName,
       supervisor_id: body.supervisor_id,
       supervisor_status: "Pending",
       // alloted_supervisor_id: ""

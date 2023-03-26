@@ -7,7 +7,9 @@ module.exports = async (req, res, next) => {
     // this is for automatically updating the course filed in the faculty 
     //if it does not exist and student has filled it
     const facultyId = await Courses.find({_id : course_id} , ["faculty_id"]);
+    // console.log(facultyId);
     const courseId = await Faculty.find({_id : facultyId[0].faculty_id , course : {"$eq" : course_id}});
+    // console.log(courseId);
     if(courseId.length == 0 && courseId != null){
       await Faculty.updateOne({_id : facultyId[0].faculty_id},{
         "$push" : {"course" : course_id}

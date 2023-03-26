@@ -1,3 +1,5 @@
+const getRequestData = require("../controller/getRequestData.controller");
+
 module.exports = {
   // test route
   test: require("./test.router"),
@@ -9,6 +11,6 @@ module.exports = {
   getAllFaculty: require("../controller/getAllFaculty.controller"),
   requestApprove: require("../controller/requestApprove.controller"),
   requestReject: require("../controller/requestReject.controller"),
-  getAllScholarData : require("../controller/getAllScholarsData.controller")
-  
+  getAllScholarData : require("../controller/getAllScholarsData.controller"),
+  getRequestData: require("../controller/getRequestData.controller")
 };

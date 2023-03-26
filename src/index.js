@@ -60,9 +60,9 @@ app.get("/faculty/profile", passport.authenticate("jwt", { session: false }), ro
 app.get("/scholar-data", routes.getAllScholarData);
 app.post("/request-supervisor", passport.authenticate("jwt", { session: false }), routes.requestSupervisor);
 app.get("/get-all-faculties", passport.authenticate("jwt", { session: false }), routes.getAllFaculty);
-app.post("/request/:id/approve", passport.authenticate("jwt", { session: false }), routes.requestApprove)
-app.post("/request/:id/reject", passport.authenticate("jwt", { session: false }), routes.requestReject)
-
+app.post("/request/approve/:id", passport.authenticate("jwt", { session: false }), routes.requestApprove);
+app.post("/request/reject/:id", passport.authenticate("jwt", { session: false }), routes.requestReject);
+app.get("/scholar/request-data", passport.authenticate("jwt",{session:false}), routes.getRequestData);
 //for scholar data to show 
 
 
