@@ -1,19 +1,19 @@
 const nodeMailer = require('../nodemailer');
 const Scholar = require('../../database/models/scholar.model');
 
-exports.newRequest = async (request,user) => {
+exports.newRequest = async (data) => {
     nodeMailer.transporter.sendMail({
         from: process.env.EMAIL,
-        to : user.email,
-        subject : `Supervisor Request result from ${request.supervisor}`,
-        html : `<h2>Greetings ${user.fullName} your request has been ${request.supervisor_status} from ${request.supervisor}</h2>`
+        to : data.user.email,
+        subject : `Supervisor Request result from ${data.request.supervisor}`,
+        html : `<h2>Greetings ${data.user.fullName} your request has been ${data.request.supervisor_status} from ${data.request.supervisor}</h2>`
     },(err,info)=>{
         if(err){
             console.log('error');
             return;
         }
 
-        console.log('meds;dg' , info);
+        // console.log('messgae : )' , info);
         return;
     });
 }

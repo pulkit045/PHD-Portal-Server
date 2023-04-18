@@ -1,6 +1,6 @@
 const nodeMailer = require('nodemailer');
-const ejs = require('ejs');
-const path = require('path');
+// const ejs = require('ejs');
+// const path = require('path');
 
 let transporter = nodeMailer.createTransport({
     service : 'gmail',
