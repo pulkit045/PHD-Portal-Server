@@ -12,5 +12,7 @@ module.exports = {
   requestApprove: require("../controller/requestApprove.controller"),
   requestReject: require("../controller/requestReject.controller"),
   getAllScholarData : require("../controller/getAllScholarsData.controller"),
-  getRequestData: require("../controller/getRequestData.controller")
+  getRequestData: require("../controller/getRequestData.controller"),
+  updateSupervisor: require("../controller/updateSupervisor"),
+  updateSupervisorNone : require("../controller/updateSupervisorNone")
 };

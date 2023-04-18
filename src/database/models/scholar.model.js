@@ -11,6 +11,7 @@ const ScholarSchema = new Schema({
 	enrollmentNumber: {
 		type: String,
 		required: true,
+		
 	},
 
 	// year of admission in Ph.D
@@ -97,7 +98,7 @@ const ScholarSchema = new Schema({
 
 	supervisor: {
 		type: String,
-		default: "NA"
+		default: ""
 	},
 
 	courses: [
