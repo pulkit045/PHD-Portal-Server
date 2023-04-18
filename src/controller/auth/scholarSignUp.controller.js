@@ -3,8 +3,9 @@ const hashPassword = require("../../utils/hashPassword");
 
 const scholarSignUp = async (req, res, next) => {
 	try {
-		const scholar = req.body;
 
+		// mey be can assign role at this point of time : ) 
+		const scholar = req.body;
 		scholar.password = await hashPassword(scholar.password);
 
 		const newScholar = new Scholar(req.body);

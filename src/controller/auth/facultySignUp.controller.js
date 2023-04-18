@@ -12,6 +12,7 @@ const facultySignUp = async (req, res, next) => {
 		res.send(newfaculty)
 	}
 	catch (err) {
+		console.log(err);
 		next(err)
 	}
 }

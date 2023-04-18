@@ -21,7 +21,10 @@ module.exports = async (req, res, next) => {
 				}
 
 				const body = { _id: user._id, email: user.email, fullName: user.fullName };
-
+				// no role distinguish between phd and mtech : ( 
+				// ok i'm not saving the role part of it , just circulating it in the jwt token
+				// which will be provided having two things first is the (user._id,  email , fullName , role )
+				// which i have to assign here but how to do that easily : ) 
 				let role = "scholar";
 
 				const token = jwt.sign({ user: body, role }, process.env.SECRET, {
