@@ -19,13 +19,15 @@ module.exports = async (req, res, next) => {
 					console.log("User couldn't be logged in.");
 					throw new Error(error);
 				}
-
+				const str = String(user.email);
+				let role = "scholar";
+				if(str[0] === "m" && str[1] === "c" && str[2] === "s")
+					role = "mtech";
 				const body = { _id: user._id, email: user.email, fullName: user.fullName };
 				// no role distinguish between phd and mtech : ( 
 				// ok i'm not saving the role part of it , just circulating it in the jwt token
 				// which will be provided having two things first is the (user._id,  email , fullName , role )
 				// which i have to assign here but how to do that easily : ) 
-				let role = "scholar";
 
 				const token = jwt.sign({ user: body, role }, process.env.SECRET, {
 					expiresIn: "24h",

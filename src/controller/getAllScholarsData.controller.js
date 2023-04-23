@@ -16,6 +16,7 @@ module.exports = async (req, res, next) => {
             dt.requests.push(request);
         }
         const flt_nin = await Faculty.find({_id : {$nin : flt}}).exec();
+        console.log(flt_nin);
         data.push({dt , flt_nin});
     }
     res.send(data);

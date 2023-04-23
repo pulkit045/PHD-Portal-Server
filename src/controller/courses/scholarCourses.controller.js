@@ -1,6 +1,7 @@
 const Scholar = require("../../database/models/scholar.model");
 const Courses = require("../../database/models/courses.model");
 const Faculty = require("../../database/models/faculty.model");
+
 module.exports = async (req, res, next) => {
   const { course_id } = req.body;
   try{

@@ -2,6 +2,7 @@ const Scholar = require("../../database/models/scholar.model");
 const Courses = require("../../database/models/courses.model");
 
 module.exports = async (req, res, next) => {
+  console.log('Being Hit');
   const { course_id } = req.body;
   try{
     await Scholar.updateOne(
