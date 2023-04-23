@@ -65,6 +65,7 @@ app.post("/request/reject/:id", passport.authenticate("jwt", { session: false })
 app.get("/scholar/request-data", passport.authenticate("jwt",{session:false}), routes.getRequestData);
 app.put("/update-supervisor/:_id",passport.authenticate("jwt",{session:false}), routes.updateSupervisor);
 app.put("/update-supervisor/:scholar_id/:fullName",passport.authenticate("jwt",{session:false}), routes.updateSupervisorNone);
+app.get('/get-all-supervisor',passport.authenticate("jwt",{session:false}), routes.getAllSupervisor );
 //for scholar data to show 
 
 

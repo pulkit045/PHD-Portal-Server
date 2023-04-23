@@ -14,5 +14,6 @@ module.exports = {
   getAllScholarData : require("../controller/getAllScholarsData.controller"),
   getRequestData: require("../controller/getRequestData.controller"),
   updateSupervisor: require("../controller/updateSupervisor"),
-  updateSupervisorNone : require("../controller/updateSupervisorNone")
+  updateSupervisorNone : require("../controller/updateSupervisorNone"),
+  getAllSupervisor: require("../controller/getAllSupervisor")
 };
