@@ -7,7 +7,6 @@ const requestWorker = require('../workers/request_worker');
 
 module.exports = async (req, res, next) => {
 	const reqId = req.params.id;
-	// console.log(reqId);
 
 	const request = (await Request.findById(reqId)).toObject();
 	const user = (await Scholar.findById(request.scholar_id));

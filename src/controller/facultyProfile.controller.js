@@ -19,6 +19,7 @@ module.exports = async (req, res, next) => {
 		// 	requestedFaculty: data.requested_faculty,
 		// 	approvedFaculty: data.approved_faculty
 		// }
+		// console.log(faculty);
 		res.send(faculty);
 	}
 	catch (err) {
