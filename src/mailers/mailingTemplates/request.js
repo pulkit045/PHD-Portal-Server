@@ -9,7 +9,7 @@ exports.newRequest = async (data) => {
         html : `<h2>Greetings ${data.user.fullName} your request has been ${data.request.supervisor_status} from ${data.request.supervisor}</h2>`
     },(err,info)=>{
         if(err){
-            console.log('error');
+            console.log('error' , err);
             return;
         }
 
@@ -17,3 +17,11 @@ exports.newRequest = async (data) => {
         return;
     });
 }
+
+
+//to do
+
+//mtech role do something with it 
+//examcell
+//mailing for supervisor confirmation as well as recieving new request from scholars
+//some table related stuff : ) 
