@@ -3,118 +3,121 @@ const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
 const ScholarSchema = new Schema({
-	fullName: {
-		type: String,
-		required: true,
-	},
+  fullName: {
+    type: String,
+    required: true,
+  },
 
-	enrollmentNumber: {
-		type: String,
-		required: true,
-		
-	},
+  enrollmentNumber: {
+    type: String,
+    required: true,
+  },
 
-	// year of admission in Ph.D
-	admission: {
-		type: String,
-		required: true,
-	},
+  // year of admission in Ph.D
+  admission: {
+    type: String,
+    required: true,
+  },
 
-	gender: {
-		type: String,
-		required: true,
-	},
+  gender: {
+    type: String,
+    required: true,
+  },
 
-	contactNo: {
-		type: String,
-		required: true,
-	},
+  contactNo: {
+    type: String,
+    required: true,
+  },
 
-	// email to contact(generally personal Email)
-	email: {
-		type: String,
-		unique: true,
-	},
+  // email to contact(generally personal Email)
+  email: {
+    type: String,
+    unique: true,
+  },
 
-	password: {
-		type: String,
-		required: true,
-	},
+  password: {
+    type: String,
+    required: true,
+  },
 
-	// field of research
-	program: {
-		type: String,
-		required: true,
-	},
-	course_active:[
-		{
-			type: mongoose.SchemaTypes.ObjectId,
-			ref: "course",
-		}
-	],
-	course_completed:[
-		{
-			type: mongoose.SchemaTypes.ObjectId,
-			ref: "course",
-		}
-	],
-	requests: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "request"
-		}
-	],
+  // field of research
+  program: {
+    type: String,
+    required: true,
+  },
+  course_active: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "course",
+    },
+  ],
+  course_completed: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "course",
+    },
+  ],
+  requests: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "request",
+    },
+  ],
 
-	notification: [
-		{
-			iat: {
-				type: Date,
-				required: true,
-				default: Date.now,
-			},
-			exp: {
-				type: Date,
-				required: true,
-				default: () => Date.now() + 7 * 24 * 60 * 60 * 1000,
-			},
-			message: {
-				type: String,
-			},
-		},
-	],
+  notification: [
+    {
+      iat: {
+        type: Date,
+        required: true,
+        default: Date.now,
+      },
+      exp: {
+        type: Date,
+        required: true,
+        default: () => Date.now() + 7 * 24 * 60 * 60 * 1000,
+      },
+      message: {
+        type: String,
+      },
+    },
+  ],
 
-	readNotifications: [
-		{
-			iat: {
-				type: Date,
-				required: true,
-				default: Date.now,
-			},
-			message: {
-				type: String,
-			},
-		},
-	],
+  readNotifications: [
+    {
+      iat: {
+        type: Date,
+        required: true,
+        default: Date.now,
+      },
+      message: {
+        type: String,
+      },
+    },
+  ],
 
-	supervisor: {
-		type: String,
-		default: ""
-	},
+  supervisor: {
+    type: String,
+    default: "",
+  },
 
-	courses: [
-		{ type: String }
-	],
-
-	total_credits_active: {
-		type: Number,
-		default: 0
-	},
-	total_credits_done: {
-		type: Number,
-		default: 0
-	}
-
-
+  temporary_supervisor: {
+    type : Schema.Types.ObjectId,
+    ref : "facultie"
+    // required : true
+  },
+  //checker for whether assigned by the director
+  isDirector: {
+    type: Boolean,
+    default: false,
+  },
+  total_credits_active: {
+    type: Number,
+    default: 0,
+  },
+  total_credits_done: {
+    type: Number,
+    default: 0,
+  },
 });
 
 // The code in the UserScheme.pre() function is called a pre-hook.
@@ -134,10 +137,10 @@ const ScholarSchema = new Schema({
 // It will return true if there is a match.
 // Otherwise, it will return false if there is not a match.
 ScholarSchema.methods.isValidPassword = async function (password) {
-	const user = this;
-	const compare = await bcrypt.compare(password, user.password);
+  const user = this;
+  const compare = await bcrypt.compare(password, user.password);
 
-	return compare;
+  return compare;
 };
 
 // create student model

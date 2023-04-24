@@ -48,7 +48,12 @@ const FacultySchema = new Schema({
 			ref: "request"
 		}
 	],
-
+	under_supervision : [
+		{
+			type : Schema.Types.ObjectId,
+			ref : 'scholar'
+		}
+	],
 	notification: [
 		{
 			iat: {

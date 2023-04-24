@@ -1,6 +1,9 @@
 const Scholar = require("../database/models/scholar.model");
 const Faculty = require("../database/models/faculty.model");
 const Request = require("../database/models/requests.model");
+const newRequest = require('../mailers/mailingTemplates/requestsupervisor'); 
+const queue = require('../workers/kue');
+const requestWorker = require('../workers/requestsupervisor_worker');
 
 const requestSupervisor = async (req, res, next) => {
   try {
@@ -31,6 +34,20 @@ const requestSupervisor = async (req, res, next) => {
       // alloted_supervisor_id: ""
     };
 
+    const data = {
+      supervisorname : supervisorData.fullName,
+      scholarname : scholarData.fullName,
+      supervisormail : supervisorData.email
+    }
+
+    let job = queue.create('emailstofaculty',data).save(function(err){
+			if(err){
+				console.log(`error in creating the job for the worker ${err}`);
+				return ;
+			}
+			return;
+		});
+
     const request = new Request(requestData);
 
     scholarData.requests.push(request._id);
@@ -39,6 +56,8 @@ const requestSupervisor = async (req, res, next) => {
     await request.save();
     await Scholar.findByIdAndUpdate(req.user.user._id, scholarData);
     await Faculty.findByIdAndUpdate(body.supervisor_id, supervisorData);
+
+
 
     res.status = 200;
     res.send({
