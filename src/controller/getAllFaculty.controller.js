@@ -3,7 +3,7 @@ const Request = require("../database/models/requests.model");
 module.exports = async (req, res, next) => {
   try {
     const faculties = await Faculty.find({}, ["fullName", "_id"])
-      .where({ email: { $nin: ["fic@iiitl.ac.in", "director@iiitl.ac.in"] } })
+      .where({ email: { $nin: ["fic@iiitl.ac.in", "director@iiitl.ac.in","examinationcell@iiitl.ac.in"] } })
       .exec();
     const data = [];
     for (let faculty of faculties) {

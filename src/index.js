@@ -127,7 +127,7 @@ app.patch(
   routes.finalizeSupervisorFaculty
 );
 app.get('/faculty/get-my-scholar' , passport.authenticate("jwt", { session: false }), routes.getMyScholar);
-
+app.get('/examcell/get-scholar-supervisor-data' , passport.authenticate("jwt", { session: false }) , routes.getScholarSupervisorExamCell);
 // ///////////////////////////    ROUTES END  ////////////////////////////////
 
 // Handle errors.
