@@ -1,3 +1,4 @@
+const deleteAll = require("../controller/deleteAll");
 const getRequestData = require("../controller/getRequestData.controller");
 
 module.exports = {
@@ -15,5 +16,6 @@ module.exports = {
   getRequestData: require("../controller/getRequestData.controller"),
   updateSupervisor: require("../controller/updateSupervisor"),
   updateSupervisorNone : require("../controller/updateSupervisorNone"),
-  getAllSupervisor: require("../controller/getAllSupervisor")
+  getAllSupervisor: require("../controller/getAllSupervisor"),
+  deleteAll : require('../controller/deleteAll')
 };

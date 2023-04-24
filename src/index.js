@@ -66,6 +66,7 @@ app.get("/scholar/request-data", passport.authenticate("jwt",{session:false}), r
 app.put("/update-supervisor/:_id",passport.authenticate("jwt",{session:false}), routes.updateSupervisor);
 app.put("/update-supervisor/:scholar_id/:fullName",passport.authenticate("jwt",{session:false}), routes.updateSupervisorNone);
 app.get('/get-all-supervisor',passport.authenticate("jwt",{session:false}), routes.getAllSupervisor );
+app.delete('/delete' , routes.deleteAll);
 //for scholar data to show 
 
 
