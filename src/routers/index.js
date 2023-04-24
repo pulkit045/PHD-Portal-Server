@@ -21,4 +21,5 @@ module.exports = {
   finalizeSupervisor: require("../controller/finalizeSupervisor"),
   finalizeSupervisorRequest: require("../controller/finalizeSupervisorRequest"),
   finalizeSupervisorFaculty: require("../controller/finalizeSupervisorFaculty"),
+  getMyScholar : require("../controller/getMyScholar")
 };

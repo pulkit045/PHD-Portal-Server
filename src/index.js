@@ -101,7 +101,7 @@ app.put(
   routes.updateSupervisor
 );
 app.put(
-  "/update-supervisor/:scholar_id/:fullName",
+  "/update-supervisor/:scholar_id/:fullName/:supervisor_id",
   passport.authenticate("jwt", { session: false }),
   routes.updateSupervisorNone
 );
@@ -126,6 +126,7 @@ app.patch(
   passport.authenticate("jwt", { session: false }),
   routes.finalizeSupervisorFaculty
 );
+app.get('/faculty/get-my-scholar' , passport.authenticate("jwt", { session: false }), routes.getMyScholar);
 
 // ///////////////////////////    ROUTES END  ////////////////////////////////
 

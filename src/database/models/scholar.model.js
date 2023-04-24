@@ -99,6 +99,12 @@ const ScholarSchema = new Schema({
     type: String,
     default: "",
   },
+
+  temporary_supervisor: {
+    type : Schema.Types.ObjectId,
+    ref : "facultie"
+    // required : true
+  },
   //checker for whether assigned by the director
   isDirector: {
     type: Boolean,
