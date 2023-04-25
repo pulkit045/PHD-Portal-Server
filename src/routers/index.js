@@ -22,5 +22,7 @@ module.exports = {
   finalizeSupervisorRequest: require("../controller/finalizeSupervisorRequest"),
   finalizeSupervisorFaculty: require("../controller/finalizeSupervisorFaculty"),
   getMyScholar : require("../controller/getMyScholar"),
-  getScholarSupervisorExamCell : require('../controller/examinationScholar')
+  getScholarSupervisorExamCell : require('../controller/examinationScholar'),
+  getScholarCourseExamCell : require('../controller/examinationCourses')
+  // downloadFile : require('../controller/downloadExamcell')
 };

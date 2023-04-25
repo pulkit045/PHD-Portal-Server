@@ -128,6 +128,8 @@ app.patch(
 );
 app.get('/faculty/get-my-scholar' , passport.authenticate("jwt", { session: false }), routes.getMyScholar);
 app.get('/examcell/get-scholar-supervisor-data' , passport.authenticate("jwt", { session: false }) , routes.getScholarSupervisorExamCell);
+app.get('/examcell/get-course-scholar', passport.authenticate("jwt", { session: false }) , routes.getScholarCourseExamCell);
+// app.get('/examcell/download-file', ppassport.authenticate("jwt", { session: false }) , routes.downloadFile);
 // ///////////////////////////    ROUTES END  ////////////////////////////////
 
 // Handle errors.
