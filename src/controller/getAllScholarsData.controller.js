@@ -32,7 +32,7 @@ module.exports = async (req, res, next) => {
         dt.requests.push(request);
       }
       const flt_nin = await Faculty.find({ _id: { $nin: flt } })
-        .where({ email: { $nin: ["fic@iiitl.ac.in", "director@iiitl.ac.in"] } })
+        .where({ email: { $nin: ["fic@iiitl.ac.in", "director@iiitl.ac.in" ,"examinationcell@iiitl.ac.in"] } })
         .exec();
       console.log(flt_nin);
       data.push({ dt, flt_nin });

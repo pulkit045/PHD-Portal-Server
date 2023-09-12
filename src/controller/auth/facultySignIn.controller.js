@@ -31,6 +31,9 @@ module.exports = async (req, res, next) => {
 				else if (user.email === "fic@iiitl.ac.in") {
 					role = "fic";
 				}
+				else if(user.email === "examinationcell@iiitl.ac.in"){
+					role = "ecell";
+				}
 
 				const token = jwt.sign({ user: body, role }, process.env.SECRET, {
 					expiresIn: "30d",
